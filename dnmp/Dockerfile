@@ -19,6 +19,5 @@ RUN export MC="-j$(nproc)" \
     && chmod +x "${MORE_EXTENSION_INSTALLER}" \
     && sh install.sh \
     && sh "${MORE_EXTENSION_INSTALLER}" \
-    && rm -rf /tmp/extensions
 
 WORKDIR /var/www/html
