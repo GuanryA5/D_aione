@@ -11,7 +11,8 @@ services:
       MYSQL_PASSWORD: "CQaGNDci66"
       MYSQL_ROOT_PASSWORD: "G0TywS2ohD"
     volumes:
-      - /data/mysql/:/var/lib/mysql/
+      - $PWD/mysql/:/var/lib/mysql/
+      - $PWD/conf/mysql/:/etc/mysql/mysqld.conf.d/
     networks:
       - net-mysql
 
@@ -19,12 +20,14 @@ services:
     image: phpmyadmin/phpmyadmin:fpm-alpine
     container_name: myadmin
     ports:
-      - "8080:80"
+      - "80:80"
     environment:
       MYSQL_USER: "monitor"
       MYSQL_PASSWORD: "CQaGNDci66"
       MYSQL_ROOT_PASSWORD: "G0TywS2ohD"
       PMA_HOST: mysqld57
+    volumes:
+      - $PWD/conf/myadmin/config.user.inc.php:/etc/phpmyadmin/config.user.inc.php
     depends_on:
       - mysql
     networks:
