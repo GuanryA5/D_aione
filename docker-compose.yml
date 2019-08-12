@@ -1,7 +1,6 @@
 version: '3'
 services:
   nginx:
-    container_name: nginx
     image: nginx:${NGINX_VERSION}
     ports:
       - "${NGINX_HTTP_HOST_PORT}:80"
@@ -83,7 +82,7 @@ services:
       TZ: "$TZ"
     networks:
       - default
-    
+
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
     ports:
@@ -94,7 +93,6 @@ services:
       - TZ="$TZ"
       - PMA_HOST=mysql
       - PMA_PORT=3306
-      
 
   phpredisadmin:
     image: erikdubbelboer/phpredisadmin:latest
@@ -106,7 +104,6 @@ services:
       - TZ="$TZ"
       - REDIS_1_HOST=redis
       - REDIS_1_PORT=6379
-
 
   elasticsearch:
     container_name: elastic${ELASTICSEARCH_VERSION}
